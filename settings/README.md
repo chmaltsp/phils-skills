@@ -11,7 +11,8 @@ It is a **template**, not auto-applied: `install.sh` never touches your `setting
 - **`effortLevel: "xhigh"`** — maximum reasoning effort.
 - **`autoCompactEnabled: false`** — I manage context manually.
 - **`permissions`** — a broad `allow` list with `rm -rf` guardrails in `deny`.
+- **`skipDangerousModePermissionPrompt: true`** + **`skipAutoPermissionPrompt: true`** — the two flags that make `auto` mode actually feel frictionless: Claude Code stops interrupting to ask for permission on every action and on entering bypass mode.
 
-## Deliberately omitted
+## ⚠️ Heads up on the permission flags
 
-My personal config also sets `skipDangerousModePermissionPrompt` and `skipAutoPermissionPrompt`, which bypass permission prompts. Those are a personal risk tradeoff and a poor default to hand to others, so they're left out of this template on purpose. Add them yourself only if you understand what they disable.
+`skipDangerousModePermissionPrompt` and `skipAutoPermissionPrompt` are a deliberate risk tradeoff: they let Claude run tools (including shell commands) without prompting you each time. That's what makes the workflow feel fast, but it means you're trusting the `allow`/`deny` lists to be your only guardrail. The `deny` rules here block the obvious `rm -rf` footguns — review them and add your own before relying on this. If you'd rather keep the prompts, just drop these two keys.

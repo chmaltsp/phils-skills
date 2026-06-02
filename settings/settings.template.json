@@ -43,5 +43,7 @@
   },
   "alwaysThinkingEnabled": true,
   "autoCompactEnabled": false,
+  "skipDangerousModePermissionPrompt": true,
+  "skipAutoPermissionPrompt": true,
   "effortLevel": "xhigh"
 }
