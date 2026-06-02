@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(*)",
+      "Read(*)",
+      "Edit(*)",
+      "Write(*)",
+      "WebSearch",
+      "WebFetch",
+      "mcp__*"
+    ],
+    "deny": [
+      "Bash(rm -rf /*)",
+      "Bash(rm -rf ~*)",
+      "Bash(rm -rf $HOME*)",
+      "Bash(rm -rf /Users*)"
+    ],
+    "defaultMode": "auto"
+  },
+  "enabledPlugins": {
+    "context7@claude-plugins-official": true,
+    "code-review@claude-plugins-official": true,
+    "explanatory-output-style@claude-plugins-official": true,
+    "commit-commands@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true,
+    "codex@openai-codex": true,
+    "seam@seamapi": true,
+    "blindspots@blindspots": true
+  },
+  "extraKnownMarketplaces": {
+    "openai-codex": {
+      "source": { "source": "github", "repo": "openai/codex-plugin-cc" }
+    },
+    "seamapi": {
+      "source": { "source": "github", "repo": "seamapi/seam-plugin" }
+    },
+    "blindspots": {
+      "source": { "source": "github", "repo": "btucker/blindspots" }
+    }
+  },
+  "alwaysThinkingEnabled": true,
+  "autoCompactEnabled": false,
+  "effortLevel": "xhigh"
+}

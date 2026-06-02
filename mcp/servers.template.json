@@ -1,0 +1,36 @@
+{
+  "_comment": "Templates for the MCP servers I run globally. Every secret is a ${ENV_VAR} placeholder — fill them in (see .env.example) and merge the entries you want into the mcpServers block of your ~/.claude.json. Do NOT commit your filled-in version.",
+  "mcpServers": {
+    "postgres": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-postgres",
+        "${POSTGRES_CONNECTION_STRING}"
+      ]
+    },
+    "linear": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://mcp.linear.app/sse"]
+    },
+    "posthog": {
+      "type": "http",
+      "url": "https://mcp.posthog.com/mcp",
+      "headers": {
+        "Authorization": "Bearer ${POSTHOG_API_KEY}"
+      }
+    },
+    "grafana": {
+      "command": "uvx",
+      "args": ["mcp-grafana"],
+      "env": {
+        "GRAFANA_URL": "${GRAFANA_URL}",
+        "GRAFANA_SERVICE_ACCOUNT_TOKEN": "${GRAFANA_SERVICE_ACCOUNT_TOKEN}"
+      }
+    },
+    "MCP_DOCKER": {
+      "command": "docker",
+      "args": ["mcp", "gateway", "run"]
+    }
+  }
+}
